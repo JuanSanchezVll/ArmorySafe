@@ -4,7 +4,7 @@
 
 ## Descrição do Projeto
 
-Este projeto tem como objetivo desenvolver uma solução IoT inovadora para monitoramento em tempo real da temperatura e umidade em depósitos e estoques de munições de artilharia. Através de sensores inteligentes integrados a uma plataforma online, o sistema permite visualização centralizada dos dados em dashboards interativos, geração de alertas automáticos e relatórios de desempenho.<br><br>
+Este projeto tem como objetivo desenvolver uma solução IoT inovadora para monitoramento em tempo real da temperatura e umidade em depósitos e estoques de munições de artilharia. Através de sensores inteligentes integrados a uma plataforma online, o sistema permite visualização centralizada dos dados em dashboards interativos, geração de alertas automáticos e relatórios de desempenho.
 
 Com isso, a ArmorySafe oferece maior segurança, confiabilidade e controle logístico no armazenamento de munições, reduzindo riscos de instabilidade, falhas e acidentes. 
 
