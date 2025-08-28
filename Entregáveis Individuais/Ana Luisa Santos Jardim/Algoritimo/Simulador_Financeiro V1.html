@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h2><b>Simulador Financeiro</b></h2>
+   
+
+    Informe a capacidade do depósito (Munições): <input id="ipt_deposito"><br><br>
+    Informe a sua localização: <input id="ipt_local"><br><br><br>
+    <button onclick="Simular105()">Calibre 105mm</button>
+    <button onclick="Simular762()">Calibre 762mm</button>
+    <button onclick="Simular556()">Calibre 556mm</button>
+    <div id="div_msg"></div>
+
+</body>
+
+<script>
+
+
+    function Simular105() {
+        var ax_municao105 = Number(ipt_deposito.value);
+        var ax_calculo105 = (ax_municao105 * 4.344);
+
+
+        div_msg.innerHTML = 
+        `<br> A estimativa do prejuizo devido a umidade não estar adequada é das munições R$ ${ax_calculo105.toFixed(2)}, 
+        considerando que a umidade não esteja de acordo com o ideal que é de 30% a 50% do deposito.  <br><br>
+        Lembrando que o valor considera apenas a perda da munições, se houver explosões o valor tornar-se ainda maior. `
+        
+    }
+
+    function Simular762() {
+        var ax_municao762 = Number(ipt_deposito.value);
+        var ax_calculo762 = (ax_municao762 * 17.50);
+
+
+        div_msg.innerHTML = 
+        `<br> A estimativa do prejuizo devido a umidade não estar adequada é das munições R$ ${ax_calculo762.toFixed(2)}, 
+        considerando que a umidade não esteja de acordo com o ideal que é de 30% a 50% do deposito. <br><br>
+        Lembrando que o valor considera apenas a perda da munições, se houver explosões o valor tornar-se ainda maior.`
+        
+    }
+
+    function Simular556() {
+        var ax_municao556 = Number(ipt_deposito.value);
+        var ax_calculo556 = (ax_municao556 * 15);
+
+
+        div_msg.innerHTML = 
+        `<br> A estimativa do prejuizo devido a umidade não estar adequada é das munições R$ ${ax_calculo556.toFixed(2)}, 
+        considerando que a umidade não esteja de acordo com o ideal que é de 30% a 50% do deposito.  <br><br>
+        Lembrando que o valor considera apenas a perda da munições, se houver explosões o valor tornar-se ainda maior.`
+        
+        
+    }
+    
+</script>
+</html>
