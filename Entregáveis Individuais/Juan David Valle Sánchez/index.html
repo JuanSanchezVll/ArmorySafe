@@ -133,3 +133,50 @@
                 }
             }
         }
+
+
+        var Qtd_perdida = (qtd_municao * perdaPct) / 100;  // 500 * 30 / 100 = 150 munições perdidas)
+        // qtd_municao = total de munições informadas (ex.: 500)
+        // perdaPct = porcentagem de perda definida pelos ifs de umidade (ex.: 30)
+        // Multiplica e divide por 100 para transformar a porcentagem em quantidade: 
+
+        var prejuizo = Qtd_perdida * preco;  // 150 * 14.89 = R$ 2.233,
+        // Qtd_perdida = munições perdidas (ex.: 150)
+        // preco = preço munição por unidade (ex.: R$ 14,89)
+
+        var total = qtd_municao * preco;  // 500 * 14.89 = R$ 7.445,00
+        // qtd_municao = total de munições (ex.: 500)
+        // preco = preço por unidade (ex.: 14,89)
+
+        var restante = total - prejuizo;  // 7445 - 2233,50 ≈ 5211,50
+
+
+        div_msg.innerHTML =
+            `<h2>Sistema ArmorySafe - Relatorio:</h2>
+
+        <b>Cenario Atual:</b> 
+        <br>${mensagem}
+
+        <br><br><b>Dados do Paiol:</b>
+        <br>Quantidade informada: <b>${qtd_municao}</b> munições
+        <br>Categoria: <b>${municao}</b>mm
+        <br>Preço Unitário: R$<b>${preco.toFixed(2)}</b>
+        <br>Valor total do lote: R$<b>${total.toFixed(2)}</b>
+        
+        <br><br><b>Impacto Financeiro:</b>
+        <br>Prejuízo estimado: <b>${perdaPct}%</b> 
+        <br>→ <b>${Qtd_perdida}</b> munições danificadas
+        <br>→ Valor Perdido R$<b>${prejuizo.toFixed(2)}</b>
+        
+        <br><br>Valor preservado: R$<b>${restante.toFixed(2)}</b>`;
+
+
+        // Com a ArmorySafe:
+        // Temos o monitoramento adequado, este prejuízo poderia ser evitado, garantindo:
+        // Aumento da vida útil das munições
+        // Redução de perdas financeiras
+        // Conformidade com normas da COLOG
+
+    }
+
+</script>
