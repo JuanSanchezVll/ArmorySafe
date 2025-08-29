@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador</title>
+</head>
+<body>
+    
+    <h3 >Este simulador simula o armazenamento de munições 105mm, 7.62x51mm e 5.56x45mm </h3>
+    <br>
+
+    Insira aqui a média em <b>%</b> de umidade no qual a munição ficou exposta <input id="inp_um"> <br>
+    Insira aqui quantos meses faz que a munição foi recebida <input id="inp_month"><br>
+    Insira aqui a quantia de munições presentes no paiol <input id="inp_qtd"><br><br>
+    <br><div>Munição Selecionada: <b id="typ">105mm</b></div><br>
+    <button onclick="onc_calc()">Calcular Situação</button><button onclick="onc_chang()">Alterar Munição</button>
+    <br><br>
+    <div id="div_res"></div>
+    
+</body>
+<script>
+var cost1 = 3000; //total do custo da munição 105
+var cost2 = 17.5; //total do custo da munição 762
+var cost3 = 14.8; //total do custo da munição 556
+var mes = 30; //estima os dias do mes
+var maxum = 40; //determina o maximo de umidade
+
+
+function onc_calc(){ 
+var num1 = Number(inp_qtd.value);
+var num2 = Number(inp_month.value);
+var umid = Number(inp_um.value);
+total = num1*cost1 //calcula o total do custo do paiol
+totalmes = mes*num2 //estima o total da idade do paiol em dias
+var excum = maxum-umid //calcula perda em % o excesso de umidade
+var perda = total*(excum/100) // estima a perda de dinheiro (se umidade =15% acima = perda de 15% do estoque)
+
+if (excum <=0) {  div_res.innerHTML = `O paiol vale um total de ${total} <br> Sendo exposto a uma umidade de ${umid}%, Por ${totalmes} Dias, <br> faz com que tenha-se pedido aproximadamente <b Style=Color: red;>${perda}USD` 
+
+} else { div_res.innerHTML = `O paiol vale um total de ${total} <br> Sendo exposto a uma umidade de ${umid}%, Por ${totalmes} Dias, <br> <b style="color: red;">SEU PAIOL CORRE RISCO DE EXPLOSÃO!</b>`
+    
+}
+
+}
+
+function onc_chang(){
+
+if (typ.innerHTML == '105mm') { typ.innerHTML = '7.62x51mm'; cost1 = 17.5
+    
+} else { if (typ.innerHTML == '7.62x51mm') { typ.innerHTML = '5.56x51mm'; cost1 = 14.8
+    
+} else { typ.innerHTML = '105mm'; cost1 = 3000
+    
+}
+    
+}
+
+}
+
+</script>
+</html>
