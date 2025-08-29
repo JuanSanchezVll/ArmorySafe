@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro Individual</title>
+</head>
+<body>
+    <h1>Simulador Financeiro ArmorySafe</h1>
+    <p>Legenda: <br> <br>
+    <b>1-</b> Munição 5.56x45mm <br>
+    <b>2-</b> Munição 7.62mm <br>
+    <b>3-</b> Munição 105mm</p>
+    Informe o tipo de munição (1, 2 ou 3): <input type="text" id="ipt_muni"> <br> <br>
+    Informe a quantidade dessa munição armazenada em seu paiol: <input type="text" id="ipt_qtdmuni"> <br><br>
+    <button onclick="calculo()">Faça uma simulação</button> <br><br>
+    <div id="resultado"></div>
+</body>
+<script>
+    function calculo() {
+        var tpmuni = Number(ipt_muni.value)
+        var qntdmuni = Number(ipt_qtdmuni.value)
+
+        var muni556 = 10.20
+        var muni762 = 14.74
+        var muni105 =  1275
+        var valormuni = 0
+
+        ipt_muni.value = ''
+        ipt_qtdmuni.value = ''
+
+        if (tpmuni == 1) {
+            valormuni = muni556
+            resultado.innerHTML = `Munição 5,56x45mm - munição leve de fuzil para tiro individual e treinamento <br><br> <b>Preço médio/unidade: R$ ${valormuni.toFixed(2)}</b> <br> <hr>`
+
+            resultado.innerHTML += `<b>Umidade acima de 80% no paiol ⬇️</b> <br><br>
+
+            Riscos de oxidação, degradação e falha de disparo <br><br>
+
+            Com o monitoramento ArmorySafe, sua economia potencial é de: <b style="color: green;">R$ ${((valormuni *qntdmuni)* 0.95).toFixed(2)}</b> <br><br>
+
+            <b>Umidade abaixo de 40% no paiol ⬇️</b> <br><br>
+
+            Risco de destruição parcial ou total do paiol, danos em armazéns e munição. Você pode estar lidando com um possível prejuízo de <b style="color: red;">milhões a dezenas de milhões de reais</b>`
+        }
+
+        if (tpmuni == 2) {
+            valormuni = muni762
+            resultado.innerHTML = `Munição 7,62mm - projétil de artilharia para destruir estruturas e fogo de apoio em área. <br><br> <b>Preço médio/unidade: R$ ${valormuni.toFixed(2)}</b> <hr>`
+
+            resultado.innerHTML += `<b>Umidade acima de 80% no paiol ⬇️</b> <br><br>
+
+            Riscos de oxidação, degradação e falha de disparo <br><br>
+
+            Com o monitoramento ArmorySafe, sua economia potencial é de: <b style="color: green;">R$ ${((valormuni *qntdmuni)* 0.95).toFixed(2)}</b> <br><br>
+
+            <b>Umidade abaixo de 40% no paiol ⬇️</b> <br><br>
+
+            Risco de destruição parcial ou total do paiol, danos em armazéns e munição. Você pode estar lidando com um possível prejuízo de <b style="color: red;">milhões a dezenas de milhões de reais</b>`
+        }
+
+        if (tpmuni == 3) {
+            valormuni = muni105
+            resultado.innerHTML = `Munição 105mm - projétil de artilharia para destruir estruturas e fogo de apoio em área. <br><br> <b>Preço médio/unidade: R$ ${valormuni.toFixed(2)}</b> <hr>`
+
+            resultado.innerHTML += `<b>Umidade acima de 80% no paiol ⬇️</b> <br><br>
+
+            Riscos de oxidação, degradação e falha de disparo <br><br>
+
+            Com o monitoramento ArmorySafe, sua economia potencial é de: <b style="color: green;">R$ ${((valormuni *qntdmuni)* 0.95).toFixed(2)}</b> <br><br>
+
+            <b>Umidade abaixo de 40% no paiol ⬇️</b> <br><br>
+
+            Risco de destruição parcial ou total do paiol, danos em armazéns e munição. Você pode estar lidando com um possível prejuízo de <b style="color: red;">milhões a dezenas de milhões de reais</b>`
+        }
+    }
+</script>
+</html>
