@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <!-- Escolha a numeração correspondente (1,2,3):
+    <input type="text" id="input_numeracao"> -->
+
+    <h1>ArmorySafe</h1>
+
+    <button>Munição 5,56mm</button>
+    <button>Munição 7,62mm</button>
+    <button>Munição 105mm</button>
+    <br><br>
+    Municao:
+    <input type="text" id="input_qtd_municao">
+    <br><br>
+    Paiol:
+    <input type="text" id="input_Paiol">
+
+
+
+</body>
+
+</html>
+<script>
+
+    // var municao_5_56 = input_municao.value;
+    // var municao_7_62 = input_municao.value;
+    // var municao_105 = input_municao.value;
+
+
+    function calcular() {
+
+        var municao = input_municao.value;
+        var paiol = input_paiol.value;
+        var qtd_municao = Number(input_qtd.value);
+        var umidade = Number(input_umidade.value)
+
+        if (municao == '5,56') {
+            div_msg.innerHTML = `Você escolheu a munição 5,56`;
+        } else {
+            if (municao == '7,62') {
+                div_msg.innerHTML = `Você escolheu a munição 7,62`;
+            } else {
+                if (municao == '105') {
+                    div_msg.innerHTML = `Você escolheu a munição 105`;
+                } else {
+                    div_msg.innerHTML = `Munição não reconhecida`;
+                }
+            }
+        }
+
+    }
+
+</script>
