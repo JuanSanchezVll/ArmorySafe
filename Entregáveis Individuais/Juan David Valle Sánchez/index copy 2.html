@@ -81,3 +81,55 @@
         // }
 
     }
+    function total() {
+
+        var municao = input_municao.value;
+        var qtd_municao = Number(input_qtd.value);
+        var umidade = Number(input_umidade.value);
+
+        var preco = 0;
+        if (municao === "5,56") {
+            preco = 14.89;
+        } else {
+            if (municao === "7,62") {
+                preco = 17.50;
+            } else {
+                if (municao === "105") {
+                    preco = 4344.00
+                } else {
+                    preco = 0
+                }
+            }
+        }
+
+        var perdaPct = 0;
+        var mensagem = "";
+
+        if (umidade >= 10 && umidade <= 15) {
+            perdaPct = 100;
+            mensagem = "Alerta Máximo - Risco elevado de explosão <br>Consequência: Perda total do material.";
+        }
+        else {
+            if (umidade >= 16 && umidade <= 29) {
+                perdaPct = 30;
+                mensagem = "Alerta - Degradação das munições <br>Consequência: Prejuízo significativo";
+            }
+            else {
+                if (umidade >= 30 && umidade <= 50) {
+                    perdaPct = 0;
+                    mensagem = "Condição perfeita - Munições preservadas <br>Consequência: Vida útil otimizada.";
+                }
+                else {
+                    if (umidade >= 51 && umidade <= 70) {
+                        perdaPct = 30;
+                        mensagem = "Alerta - Degradação das munições <br>Consequência: Prejuízo significativo";
+                    }
+                    else {
+                        if (umidade >= 71 && umidade <= 80) {
+                            perdaPct = 100;
+                            mensagem = "Condição gravíssima – Umidade elevada gera empedramento da pólvora <br>Consequência: Perda total.";
+                        }
+                    }
+                }
+            }
+        }
