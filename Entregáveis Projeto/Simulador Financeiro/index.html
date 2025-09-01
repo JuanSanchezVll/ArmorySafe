@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro Armory Safe</title>
+</head>
+<body>
+    <h2>ArmorySafe - Faça uma simulação</h2>
+    <p>Simule abaixo o impacto da umidade no valor das munições armazenadas.</p>
+    <p>Selecione o calibre da munição armazenada abaixo</p>
+    <button onclick="calc556()">5,56x45mm</button> <button onclick="calc762()">7,62x51mm</button> <button onclick="calc105()">105mm</button> <br><br>
+    <div id="resultado1"></div>
+
+</body>
+<script>
+    var muni = ''
+    var gastototal = 0
+    var tabelado = 0
+
+    var qtd556 = 0
+
+    function calc556() {
+        tabelado = 297.8
+        muni = '5,56x45mm'
+        resultado1.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perdam()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+    }
+
+    function perdam() {
+        var qtdmuni = Number(qtd_muni.value)
+        var umidade = Number(qtd_umidade.value)
+        var preco = qtdmuni * tabelado
+        qtd556 = qtd556 + qtdmuni
+
+        gastototal = gastototal + preco
+
+        resultado1.innerHTML += `<br><br> Quantidade informada de munições: ${qtdmuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+    }
+
+    function perdat() {
+
+
+        resultado1.innerHTML = `Com base na quantidade de ${qtd556} munições 5,56x45mm, a sua empresa corre um risco de prejuízo total de <b style="color: red;">R$ ${gastototal.toFixed(2)}</b>`
+    }
+</script>
+</html>
