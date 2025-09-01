@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h2><b><span style = "color:rgb(20, 95, 20);">Calculadora Financeira - Armory Safe</span></b></h2>
+
+    Quantas munições em média de 5,56mm por caixa? <input id="ipt_556mm"><br>
+    Quantas munições em média de 7,62mm por caixa? <input id="ipt_762mm"><br>
+    Quantas munições em média de 105mm por caixa? <input id="ipt_105mm"><br>
+    Quantas caixas em média você tem por estoque? <input id="ipt_caixa"><br>
+    Qual a umidade do ar em que as munições ficam hospedadas? <input id="ipt_ar"><br>
+    <button onclick="Melhorar()"><span style="color:rgb(145, 145, 21)">Como anda a sua umidade?</span></button>
+    <button onclick="Reducao()"><span style="color:red">Redução de prejuízo por cartucho:</span></button>
+    <button onclick="Media()">Redução de Prejuízo Total</button><br><br>
+    <div id="div_msg"></div>
+</body>
+<script>
+    function Reducao(){
+        var m556 = Number (ipt_556mm.value)
+        var umidade = Number (ipt_ar.value)
+        var caixas = Number (ipt_caixa.value)
+        var result = (m556 * 20) * caixas
+        var m762 = Number (ipt_762mm.value)
+        var result2 = (m762 * 28.62) * caixas
+        var m105 = Number (ipt_105mm.value)
+        var result3 = (m105 * 4344) * caixas
+        var total = (result + result2 + result3)
+        div_msg.innerHTML += `<br><br>Seguindo com os seus dados, a redução de prejuízos seria de R$${result.toFixed(2)} para cada caixa de munição de <b>5,56mm</b>;</br> Já a caixa de <b>7,62m</b> a redução seria em R$${result2.toFixed(2)}<br> E por último, mas não menos importante a caixa de <b>105mm</b> seria de R$${result3.toFixed(2)} <br>`
+    }
+    function Media(){
+        var m556 = Number (ipt_556mm.value)
+        var caixas = Number (ipt_caixa.value)
+        var result = (m556 * 20) * caixas
+        var m762 = Number (ipt_762mm.value)
+        var result2 = (m762 * 28.62) * caixas
+        var m105 = Number (ipt_105mm.value)
+        var result3 = (m105 * 4344) * caixas
+        var total = (result + result2 + result3)
+        div_msg.innerHTML += `<br> Ao total, a redução de prejuízo seria em R$${total}<br><br> <B>OBS: </B><i>Considerando que a sua temperatura fique entre 40% a 80% de umidade no ar durante o armazenamento essa redução seria possível </i><br>`
+    }
+    function Melhorar(){
+        var umidade = Number (ipt_ar.value)
+        var condicao = (40 - umidade)
+        div_msg.innerHTML += `<br>A prontra entrega, é necessario regular a umidade do ar em ${condicao} para se obter a condição mínima de conservação  `
+    }
+
+
+</script>
+</htm

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+
+<body>
+    <!-- Escolha a numeração correspondente (1,2,3):
+    <input type="text" id="input_numeracao"> -->
+
+    <h1 style="color: green;">ArmorySafe - Simulador Financeiro</h1>
+    <br>
+    Insira o porte do seu Paiol:
+    <input type="text" id="input_paiol">
+    <br><br>
+    Insira a quantidade de munição no seu Paiol:
+    <input type="text" id="input_qtd">
+    <br><br>
+    Insira a categoria de munição (mm):
+    <input type="text" id="input_municao">
+    <br><br>
+    Insira a Umidade media do Paiol (%):
+    <input type="text" id="input_umidade">
+    <br><br>
+    <button onclick="simular()">Simular</button>
+    <button onclick="total()">Total</button>
+    <br><br>
+    <div id="div_msg"></div>
+
+
+</body>
+
+</html>
+<script>
+
+    // var municao_5_56 = input_municao.value;
+    // var municao_7_62 = input_municao.value;
+    // var municao_105 = input_municao.value;
+
+    function simular() {
+
+        var municao = input_municao.value;
+        var paiol = input_paiol.value;
+        var qtd_municao = Number(input_qtd.value);
+        var umidade = Number(input_umidade.value);
+
+        div_msg.innerHTML =
+            `<h2><b>Sistema ArmorySafe</b></h2>
+
+        <b>Dados do seu Paiol:</b>
+        <br>Porte: <b>${paiol}</b>
+        <br>Quantidade de Munições: <b>${qtd_municao}</b> unidades
+        <br>Categoria: <b>${municao}</b>mm
+        <br>Umidade atual: <b>${umidade}</b>%
+
+        <br><br><b>Legendas:</b>
+        <br><b style="color:orange;">Crítico (15% - 10%)</b>
+        <br>Alerta Máximo - Risco elevado de explosão com perda total do material.
+
+        <br><br><b style="color: green;">Ideal (30% – 50%)</b>
+        <br>Condição perfeita – Munições preservadas, com vida útil otimizada.
+
+        <br><br><b style="color: red;">Extremo (71% – 80%)</b>
+        <br>Condição gravíssima – Umidade elevada gera empedramento da pólvora e perda total.`;
+
+        // if (municao == '5,56') {
+        //     div_msg.innerHTML = `Você escolheu a munição ${municao}`;
+        // } else {
+        //     if (municao == '7,62') {
+        //         div_msg.innerHTML = `Você escolheu a munição ${municao}`;
+        //     } else {
+        //         if (municao == '105') {
+        //             div_msg.innerHTML = `Você escolheu a munição ${municao}`;
+        //         } else {
+        //             div_msg.innerHTML = `Munição não reconhecida`;
+        //         }
+        //     }
+        // }
+
+    }
+    function total() {
+
+        var municao = input_municao.value;
+        var qtd_municao = Number(input_qtd.value);
+        var umidade = Number(input_umidade.value);
+
+        var preco = 0;
+        if (municao === "5,56") {
+            preco = 14.89;
+        } else {
+            if (municao === "7,62") {
+                preco = 17.50;
+            } else {
+                if (municao === "105") {
+                    preco = 4344.00
+                } else {
+                    preco = 0
+                }
+            }
+        }
+
+        var perdaPct = 0;
+        var mensagem = "";
+
+        if (umidade >= 10 && umidade <= 15) {
+            perdaPct = 100;
+            mensagem = "Alerta Máximo - Risco elevado de explosão <br>Consequência: Perda total do material.";
+        }
+        else {
+            if (umidade >= 16 && umidade <= 29) {
+                perdaPct = 30;
+                mensagem = "Alerta - Degradação das munições <br>Consequência: Prejuízo significativo";
+            }
+            else {
+                if (umidade >= 30 && umidade <= 50) {
+                    perdaPct = 0;
+                    mensagem = "Condição perfeita - Munições preservadas <br>Consequência: Vida útil otimizada.";
+                }
+                else {
+                    if (umidade >= 51 && umidade <= 70) {
+                        perdaPct = 30;
+                        mensagem = "Alerta - Degradação das munições <br>Consequência: Prejuízo significativo";
+                    }
+                    else {
+                        if (umidade >= 71 && umidade <= 80) {
+                            perdaPct = 100;
+                            mensagem = "Condição gravíssima – Umidade elevada gera empedramento da pólvora <br>Consequência: Perda total.";
+                        }
+                    }
+                }
+            }
+        }
+
+
+        var Qtd_perdida = (qtd_municao * perdaPct) / 100;  // 500 * 30 / 100 = 150 munições perdidas)
+        // qtd_municao = total de munições informadas (ex.: 500)
+        // perdaPct = porcentagem de perda definida pelos ifs de umidade (ex.: 30)
+        // Multiplica e divide por 100 para transformar a porcentagem em quantidade: 
+
+        var prejuizo = Qtd_perdida * preco;  // 150 * 14.89 = R$ 2.233,
+        // Qtd_perdida = munições perdidas (ex.: 150)
+        // preco = preço munição por unidade (ex.: R$ 14,89)
+
+        var total = qtd_municao * preco;  // 500 * 14.89 = R$ 7.445,00
+        // qtd_municao = total de munições (ex.: 500)
+        // preco = preço por unidade (ex.: 14,89)
+
+        var restante = total - prejuizo;  // 7445 - 2233,50 ≈ 5211,50
+
+
+        div_msg.innerHTML =
+            `<h2>Sistema ArmorySafe - Relatorio:</h2>
+
+        <b>Cenario Atual:</b> 
+        <br>${mensagem}
+
+        <br><br><b>Dados do Paiol:</b>
+        <br>Quantidade informada: <b>${qtd_municao}</b> munições
+        <br>Categoria: <b>${municao}</b>mm
+        <br>Preço Unitário: R$<b>${preco.toFixed(2)}</b>
+        <br>Valor total do lote: R$<b>${total.toFixed(2)}</b>
+        
+        <br><br><b>Impacto Financeiro:</b>
+        <br>Prejuízo estimado: <b>${perdaPct}%</b> 
+        <br>→ <b>${Qtd_perdida}</b> munições danificadas
+        <br>→ Valor Perdido R$<b>${prejuizo.toFixed(2)}</b>
+        
+        <br><br>Valor preservado: R$<b>${restante.toFixed(2)}</b>`;
+
+
+        // Com a ArmorySafe:
+        // Temos o monitoramento adequado, este prejuízo poderia ser evitado, garantindo:
+        // Aumento da vida útil das munições
+        // Redução de perdas financeiras
+        // Conformidade com normas da COLOG
+
+    }
+
+</script>
