@@ -1,21 +1,8 @@
-/*██████ ██████ ██████ ██████ ██████ ██████ ██████ ██████ ██████
+/*
+	          (Grupo 06)
 
- ██████  ██████  ██    ██ ██████   ██████       ██████   ██████  
-██       ██   ██ ██    ██ ██   ██ ██    ██     ██  ████ ██       
-██   ███ ██████  ██    ██ ██████  ██    ██     ██ ██ ██ ███████  
-██    ██ ██   ██ ██    ██ ██      ██    ██     ████  ██ ██    ██ 
- ██████  ██   ██  ██████  ██       ██████       ██████   ██████  
-                         (Grupo 06)
-
-Ana Luisa Santos Jardim RA 01252054
 Daniel Rezende Garcia Foschini RA 01252102
-Enrico Assef Antonucci Ferreira RA 01252095
-Gabriel Alves Miguel RA 01252053
-Guilherme dos Santos Mesquita RA 01252017
-Gustavo Mendes Furquim RA 01252053
-Juan David Valle Sánchez RA 01252026
-
- ██████ ██████ ██████ ██████ ██████ ██████ ██████ ██████ ██████*/
+*/
 
 
 CREATE DATABASE armorysafe; -- CRIA O BANCO DE DADOS 
@@ -108,7 +95,4 @@ VALUES
 ('2025-08-25 09:00:00', 82.30, 'Depósito de Munição', 'Paiol Juliet', '6ª Região Militar');
 
 SELECT * FROM umidade;
-
-
-SELECT * FROM municao WHERE reg LIKE '11%';
 
