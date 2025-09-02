@@ -10,7 +10,7 @@
     <p>Simule abaixo o impacto da umidade no valor das munições armazenadas.</p>
     <p>Selecione o calibre da munição armazenada abaixo</p>
     <button onclick="calc556()">5,56x45mm</button> <button onclick="calc762()">7,62x51mm</button> <button onclick="calc105()">105mm</button> <br><br>
-    <div id="resultado1"></div>
+    <div id="resultado"></div>
 
 </body>
 <script>
@@ -19,28 +19,62 @@
     var tabelado = 0
 
     var qtd556 = 0
+    var qtd762 = 0
+    var qtd105 = 0
 
     function calc556() {
         tabelado = 297.8
         muni = '5,56x45mm'
-        resultado1.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perdam()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni556"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda556()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
     }
 
-    function perdam() {
-        var qtdmuni = Number(qtd_muni.value)
-        var umidade = Number(qtd_umidade.value)
-        var preco = qtdmuni * tabelado
-        qtd556 = qtd556 + qtdmuni
+    function calc762() {
+        tabelado = 350
+        muni = '7,62x51mm'
+        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni762"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda762()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+    }
 
+    function calc105() {
+        tabelado = 8688
+        muni = '105mm'
+        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni105"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda105()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+    }
+
+    function perda556() {
+        var qtdMuni = Number(qtd_muni556.value)
+        var umidade = Number(qtd_umidade.value)
+        var preco = qtdMuni * tabelado
+        
+        qtd556 = qtd556 + qtdMuni
         gastototal = gastototal + preco
 
-        resultado1.innerHTML += `<br><br> Quantidade informada de munições: ${qtdmuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+    }
+
+    function perda762() {
+        var qtdMuni = Number(qtd_muni762.value)
+        var umidade = Number(qtd_umidade.value)
+        var preco = qtdMuni * tabelado
+        
+        qtd762 = qtd762 + qtdMuni
+        gastototal = gastototal + preco
+
+        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+    }
+
+    function perda105() {
+        var qtdMuni = Number(qtd_muni105.value)
+        var umidade = Number(qtd_umidade.value)
+        var preco = qtdMuni * tabelado
+        
+        qtd105 = qtd105 + qtdMuni
+        gastototal = gastototal + preco
+
+        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
     }
 
     function perdat() {
-
-
-        resultado1.innerHTML = `Com base na quantidade de ${qtd556} munições 5,56x45mm, a sua empresa corre um risco de prejuízo total de <b style="color: red;">R$ ${gastototal.toFixed(2)}</b>`
+        resultado.innerHTML = `Com base na quantidade de ${qtd556} munições 5,56x45mm, a sua empresa corre um risco de prejuízo total de <b style="color: red;">R$ ${gastototal.toFixed(2)}</b>`
     }
 </script>
 </html>
