@@ -8,73 +8,102 @@
 <body>
     <h2>ArmorySafe - Faça uma simulação</h2>
     <p>Simule abaixo o impacto da umidade no valor das munições armazenadas.</p>
+    <p>Informe a umidade média em seu paiol: <input type="text" id="input_umidade"></p>
     <p>Selecione o calibre da munição armazenada abaixo</p>
     <button onclick="calc556()">5,56x45mm</button> <button onclick="calc762()">7,62x51mm</button> <button onclick="calc105()">105mm</button> <br><br>
-    <div id="resultado"></div>
-
+    <div id="novosInputs"></div> 
+    <div id="fonteLegenda"></div>
+    <div id="resultados"></div>
 </body>
 <script>
-    var muni = ''
-    var gastototal = 0
+    var tipoMunicao = ''
+    var gastoTotal = 0
     var tabelado = 0
 
     var qtd556 = 0
     var qtd762 = 0
     var qtd105 = 0
 
+    var contador = 0 ;
+
+    // Colocar a fonte dos valores utilizados para o cálculo CBC
+
     function calc556() {
         tabelado = 297.8
-        muni = '5,56x45mm'
-        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni556"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda556()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+        tipoMunicao = '5,56x45mm'
+        novosInputs.innerHTML = `<b>I</b> 
+        - Informe a quantidade de caixas de <b>${tipoMunicao}</b>
+        
+        armazenadas:<input type="text" id="qtd_muni556"> 
+        <br><br> 
+        <button onclick="perda556()">Valor por munição</button>
+        
+        <button onclick="perdaTotal()">Simular</button>`      
+        
     }
 
     function calc762() {
         tabelado = 350
-        muni = '7,62x51mm'
-        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni762"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda762()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+        tipoMunicao = '7,62x51mm'
+        novosInputs.innerHTML = `<b>II</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni762"> <br><br> <button onclick="perda762()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`       
     }
 
     function calc105() {
         tabelado = 8688
-        muni = '105mm'
-        resultado.innerHTML = `Informe a quantidade de caixas de ${muni} armazenadas: <input type="text" id="qtd_muni105"> <br><br> Informe a umidade média no paiol: <input type="text" id="qtd_umidade" <br><br><br> <button onclick="perda105()">Perda por munição</button> <button onclick="perdat()">Perda total</button>`        
+        tipoMunicao = '105mm'
+        novosInputs.innerHTML = `<b>III</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni105"> <br><br> <button onclick="perda105()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>` 
+      
     }
 
     function perda556() {
-        var qtdMuni = Number(qtd_muni556.value)
-        var umidade = Number(qtd_umidade.value)
-        var preco = qtdMuni * tabelado
+        var qtdMunicao = Number(qtd_muni556.value)
+        var preco = qtdMunicao * tabelado
         
-        qtd556 = qtd556 + qtdMuni
-        gastototal = gastototal + preco
+        qtd556 += qtdMunicao
+        gastoTotal += preco
+        contador ++
 
-        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+        if (contador == 1) {
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+        }
+
+        resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao}<br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
     }
 
     function perda762() {
-        var qtdMuni = Number(qtd_muni762.value)
-        var umidade = Number(qtd_umidade.value)
-        var preco = qtdMuni * tabelado
-        
-        qtd762 = qtd762 + qtdMuni
-        gastototal = gastototal + preco
+        var qtdMunicao = Number(qtd_muni762.value)
+        var preco = qtdMunicao * tabelado
 
-        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+        qtd762 += qtdMunicao
+        gastoTotal += preco
+        contador ++
+
+        if (contador == 1) {
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+        }
+
+        resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao} <br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
     }
 
     function perda105() {
-        var qtdMuni = Number(qtd_muni105.value)
-        var umidade = Number(qtd_umidade.value)
-        var preco = qtdMuni * tabelado
+        var qtdMunicao = Number(qtd_muni105.value)
+        var preco = qtdMunicao * tabelado
         
-        qtd105 = qtd105 + qtdMuni
-        gastototal = gastototal + preco
+        qtd105 += qtdMunicao
+        gastoTotal += preco
+        contador ++
 
-        resultado.innerHTML += `<br><br> Quantidade informada de munições: ${qtdMuni} <br> Tipo de munição: ${muni} <br> Perda total de munições: R$ ${preco.toFixed(2)}`
+        if (contador == 1) {
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+        }
+
+        resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao} <br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
     }
 
-    function perdat() {
-        resultado.innerHTML = `Com base na quantidade de ${qtd556} munições 5,56x45mm, a sua empresa corre um risco de prejuízo total de <b style="color: red;">R$ ${gastototal.toFixed(2)}</b>`
+    function perdaTotal() {
+        umidade = Number(input_umidade.value)
+
+        resultados.innerHTML = `<br> Munições armazenadas em seu paiol: <br><br> I - ${qtd556} munições 5,56x45mm <br> II - ${qtd762} munições 7,62x51mm <br> III - ${qtd105} munições 105mm <br><br> Com as informações inseridas o seu paiol está avaliado em: <b>R$ ${gastoTotal.toFixed(2)}</b> <br> Nível de umidade informado: <b>${umidade}%</b>`
     }
 </script>
 </html>
