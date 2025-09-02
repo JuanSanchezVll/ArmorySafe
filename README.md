@@ -33,7 +33,7 @@ Com o aumento da demanda por segurança operacional e rastreabilidade em arsenai
 ## Contribuição
 
 Para contribuir com este projeto:
-1. Primeiro clone o repositório: (`git clone https://github.com/diass-gui/BeeAware.git`)
+1. Primeiro clone o repositório: (`git clone https://github.com/JuanSanchezVll/ArmorySafe.git`)
 2. Todos os dias execute o comando para atualizar o repositório com: (`git pull`)
 3. Faça as alterações necessárias e empacote com: (`git add .`)
 4. Coloque uma mensagem no commit com: (`git commit -m "nome_da_alteração"`)
