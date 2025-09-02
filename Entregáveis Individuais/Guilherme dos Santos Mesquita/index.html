@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <p>quantidade municao</p>
+    <input id="amountAmmunition"><br>
+    <p>Porcentagem em umidade</p>
+    <input id="humitity"><br>
+   
+
+    <br><br>
+
+    <p>Secione a municao</p>
+     <button onclick="valueEmmo556()">Municao 556</button>
+     <button onclick="valueEmmo762()">Municao 7.62</button>
+     <button onclick="valueEmmo105()">105mm</button>
+     <div id="msg1"></div>
+<br><br>
+       <button onclick="valorPaiol()">Valor do paiol</button>
+    <button onclick="statusPaiol()">umidade</button>
+    <div id="msg"></div>
+
+    
+</body>
+
+
+<script>
+ 
+    var paiolValue = 0;
+
+    var vEmmo556 = 0;
+    var vEmmo762 = 0;
+    var vEmmo105mm = 0;
+
+    function valueEmmo556(){
+   var amountEmmo = Number(amountAmmunition.value);
+   
+     amountEmmo  =amountEmmo * 4.92 ;
+
+    vEmmo556  = amountEmmo;
+
+    msg1.innerHTML = `Municao Selecionada: 5.56mm`
+
+
+
+    }
+        function valueEmmo762(){
+   var amountEmmo = Number(amountAmmunition.value);
+   
+     amountEmmo  =amountEmmo * 2.72 ;
+     vEmmo762  = amountEmmo;
+
+         msg1.innerHTML = `Municao Selecionada: 7.62mm`
+
+
+
+    }
+        function valueEmmo105(){
+   var amountEmmo = Number(amountAmmunition.value);
+   
+     amountEmmo  =amountEmmo * 4334 ;
+     vEmmo105mm  = amountEmmo;
+
+    msg1.innerHTML = `Municao Selecionada: 105mm`
+
+    }
+
+
+
+
+function valorPaiol(){
+
+    totalValue = vEmmo556 + vEmmo105mm + vEmmo762;
+        console.log(vEmmo556)
+
+        msg.innerHTML = `Valor aproximado do Paiol R$ ${totalValue}`
+
+    }
+function statusPaiol(){
+        if(humitity.value> 80){
+            
+            msg.innerHTML += `<p style="color:red">O paiol esta com alto risco! <br> Tome uma atitude emediatamente.</p>`
+
+        }
+        if(humitity.value < 40){
+         msg.innerHTML += `<p style="color:red">O paiol esta com alto risco! <br> Tome uma atitude emediatamente.</p>`
+
+
+        }else{
+            msg.innerHTML += `<p style="color:blue">Seu paiol esta seguro !</p>`
+
+        }
+
+    }
+
+
+</script>
+</html>
