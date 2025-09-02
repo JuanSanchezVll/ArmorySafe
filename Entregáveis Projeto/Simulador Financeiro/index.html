@@ -32,13 +32,7 @@
         tabelado = 297.8
         tipoMunicao = '5,56x45mm'
         novosInputs.innerHTML = `<b>I</b> 
-        - Informe a quantidade de caixas de <b>${tipoMunicao}</b>
-        
-        armazenadas:<input type="text" id="qtd_muni556"> 
-        <br><br> 
-        <button onclick="perda556()">Valor por munição</button>
-        
-        <button onclick="perdaTotal()">Simular</button>`      
+        - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas:<input type="text" id="qtd_muni556"><br><br><button onclick="perda556()">Valor por munição</button><button onclick="perdaTotal()">Simular</button>`      
         
     }
 
@@ -64,7 +58,7 @@
         contador ++
 
         if (contador == 1) {
-            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
         }
 
         resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao}<br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
@@ -79,7 +73,7 @@
         contador ++
 
         if (contador == 1) {
-            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
         }
 
         resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao} <br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
@@ -94,7 +88,7 @@
         contador ++
 
         if (contador == 1) {
-            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos)</i></b>'
+            fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
         }
 
         resultados.innerHTML += `<br>Quantidade informada de caixas: ${qtdMunicao} <br> Tipo de munição: ${tipoMunicao} <br> Valor total de munições: R$ ${preco.toFixed(2)} <br>`
@@ -102,8 +96,18 @@
 
     function perdaTotal() {
         umidade = Number(input_umidade.value)
+         
+        resultados.innerHTML = `<br> Munições armazenadas em seu paiol: <br><br> I - ${qtd556} munições 5,56x45mm <br> II - ${qtd762} munições 7,62x51mm <br> III - ${qtd105} munições 105mm <br><br> Com as informações inseridas o seu paiol está avaliado em: <b>R$ ${gastoTotal.toFixed(2)}</b> <br> Nível de umidade informado: <b>${umidade}%</b><br>`
 
-        resultados.innerHTML = `<br> Munições armazenadas em seu paiol: <br><br> I - ${qtd556} munições 5,56x45mm <br> II - ${qtd762} munições 7,62x51mm <br> III - ${qtd105} munições 105mm <br><br> Com as informações inseridas o seu paiol está avaliado em: <b>R$ ${gastoTotal.toFixed(2)}</b> <br> Nível de umidade informado: <b>${umidade}%</b>`
-    }
+        if (umidade <= 40){ 
+            resultados.innerHTML +=`<br>A prontra entrega, é necessario aumentar a umidade do ar em <b>${40 - umidade}%</b> para se obter a condição mínima de conservação`
+        }  else {
+                if (umidade >=80) {
+                    resultados.innerHTML +=`<br>A prontra entrega, é necessario diminuir a umidade do ar em <b>${umidade - 80}%</b> para se obter a condição máxima de conservação`
+                } else {
+                    resultados.innerHTML +=`<br>Parabéns, as condições de umidade do seu paiol estão adequadas! <br> Para manter o monitoramento preciso e sem oscilações, adote já ArmorySafe!`
+                }
+        }     
+    } 
 </script>
 </html>
