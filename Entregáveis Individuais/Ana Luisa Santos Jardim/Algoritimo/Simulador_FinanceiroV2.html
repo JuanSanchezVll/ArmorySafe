@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador Financeiro</title>
+</head>
+<body>
+    <h2><b>Simulador Financeiro - Artilharia</b></h2>
+    Informe a media de caixas por paiol: <input id="ipt_municao"> <br> <br>
+   
+    Informe a região: <br>
+    Região Norte : <b>1</b> <br>
+    Região Centro-Oeste : <b>2</b> <br>
+    Região Suldeste: <b>3</b> <br>
+    Região Nordeste: <b>4</b> <br>
+    Região Sul : <b>5</b> <br> <br>
+    <input id="ipt_regiao"> <button onclick="Local()">Inserir</button> <br><br>
+    Selecione o calibre mais utilizado: <br><br>
+    <button onclick="Simular105()">Calibre 105mm</button>
+    <button onclick="Simular762()">Calibre 762mm</button>
+    <button onclick="Simular556()">Calibre 556mm</button>
+    <br><br>
+    <div id="div_msg"></div>
+    
+</body>
+
+
+<script>
+
+    var regiao = 0;
+    function Local() {
+        
+        regiao = Number (ipt_regiao.value)
+        ipt_regiao.value = ''
+    }
+
+    function Simular105() {
+
+          var ax_municao105 = Number (ipt_municao.value);
+          var ax_calculo105 = ax_municao105 * 10;
+          var ax_result105 = ax_calculo105 * 4.165;
+
+          if (regiao == 1) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result105.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+        if (regiao == 2) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result105.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+         
+          if (regiao == 3) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result105.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+            if (regiao == 4) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 50% a 60%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result105.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+
+          if (regiao == 5) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 70% a 80%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de R$${ax_result105.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+        }
+
+
+    function Simular762() {
+
+          var ax_municao762 = Number (ipt_municao.value);
+          var ax_calculo762 = ax_municao762 * 10;
+          var ax_result762= ax_calculo762 * 4.165;
+
+          if (regiao == 1) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+          if (regiao == 2) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+         
+          if (regiao == 3) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+            if (regiao == 4) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 50% a 60%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+
+          if (regiao == 5) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 70% a 80%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de R$${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+        }
+
+        function Simular556() {
+
+          var ax_municao556 = Number (ipt_municao.value);
+          var ax_calculo556 = ax_municao556 * 10;
+          var ax_result556= ax_calculo556 * 4.165;
+
+          if (regiao ==1) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+          if (regiao == 2) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result762.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+         
+          if (regiao == 3) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 60% a 70%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result556.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+          }
+
+            if (regiao == 4) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 50% a 60%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de ${ax_result556.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+
+          if (regiao == 5) {
+            div_msg.innerHTML = 
+          `<br>Considerando que a média da sua região que tem uma média de umidade de 70% a 80%. 
+          Sendo que cada lote de 105mm tem 50 unidades de municao, voce terá um prejuízo de R$${ax_result556.toFixed(2)}
+          e terá um aumento de produtividade de 25%.`
+
+          } 
+        }
+
+
+
+</script>
+
+</html>
