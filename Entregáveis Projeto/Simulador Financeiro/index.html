@@ -211,7 +211,7 @@
 
         } else {
             if (umidade <= 70) {
-                  porc = 40;
+                  porc = 60;
 
 
                     // Variavel de prejuizo representando a perda total dos 30% 
@@ -244,11 +244,11 @@
 
 
                     relatorio.innerHTML = ` <h2>Umidade entre 50% a 70% - Risco de corrosão do material</h2> 
-                                            <h3>   Prejuizo Significativo de ${porc}% R$${prejuizo.toFixed(2)}` + `
-                                          | <span style="color:#941010"> Valor do paiol sem ArmorySafe ⮕ R$${perdaTotalDesconto.toFixed(2)}</span>
-                                          | <span style="color:green"> Valor do paiol com ArmorySafe  ⮕ R$${valorSolucao.toFixed(2)}</span> 
-                                            </h3><br>
-                                            <b>Reduzindo em até  ${100 - porcentagemSolucao.toFixed(2)}% da perda |<span  style="color:green"> Economizando ${valorSalvado.toFixed(2)}</span>  </b>`
+                                           
+                                          <h3> Possível prejuízo de ${porc}% que equivale a R$${prejuizo.toFixed(2)}
+                                                <br> <span  style="color:#941010"> Valor do paiol sem ArmorySafe  R$${perdaTotalDesconto.toFixed(2)}</span> 
+                                                ⮕ <span  style="color:green"> Valor do paiol com ArmorySafe   R$${valorSolucao.toFixed(2)}</span></h3>
+                                                <b>A ArmorySafe garante a redução do prejuízo em até  ${100 - porcentagemSolucao.toFixed(2)}% | Economia potencial de <span  style="color:green"> R$ ${valorSalvado.toFixed(2)}</span>  </b>`
 
 
             } else {
