@@ -6,7 +6,8 @@
     <title>Simulador Financeiro Armory Safe</title>
 </head>
 <body>
-    <h2>ArmorySafe - Faça uma simulação</h2>
+    <h2>ArmorySafe - Faça uma Simulação do seu paiol</h2>
+    <h5>Valor estimado do paiol e verificação de risco de umidade</h5>
     <p>Simule abaixo o impacto da umidade no valor das munições armazenadas.</p>
     <p>Informe a umidade média em seu paiol: <input type="text" id="input_umidade"></p>
     <p>Selecione o calibre da munição armazenada abaixo</p>
@@ -14,6 +15,11 @@
     <div id="novosInputs"></div> 
     <div id="fonteLegenda"></div>
     <div id="resultados"></div>
+    <div id="relatorio"></div>
+
+      
+        
+
 </body>
 <script>
     var tipoMunicao = ''
@@ -97,16 +103,54 @@
     function perdaTotal() {
         umidade = Number(input_umidade.value)
          
-        resultados.innerHTML = `<br> Munições armazenadas em seu paiol: <br><br> I - ${qtd556} munições 5,56x45mm <br> II - ${qtd762} munições 7,62x51mm <br> III - ${qtd105} munições 105mm <br><br> Com as informações inseridas o seu paiol está avaliado em: <b>R$ ${gastoTotal.toFixed(2)}</b> <br> Nível de umidade informado: <b>${umidade}%</b><br>`
+        resultados.innerHTML = `<br> Munições armazenadas em seu paiol: <br><br> I - ${qtd556} munições 5,56x45mm <br> II - ${qtd762} munições 7,62x51mm <br> III - ${qtd105} munições 105mm <br><br> Com as informações inseridas o seu paiol está avaliado em: <b>R$ ${gastoTotal.toFixed(2)}</b> <br> Nível de umidade informado: <b>${umidade}%</b><br> <br>`
 
-        if (umidade <= 40){ 
-            resultados.innerHTML +=`<br>A prontra entrega, é necessario aumentar a umidade do ar em <b>${40 - umidade}%</b> para se obter a condição mínima de conservação`
+
+        if(umidade < 51){
+
+        if (umidade >= 10){ 
+            
+            if(umidade <= 15){
+
+            prejuizo =  gastoTotal;
+                relatorio.innerHTML = `<h3>Umidade em 10% a 15%</h3> 
+                <h4 style="color:##941010">Perda máxima !!- ${prejuizo}</h4>`
+
+        }
+    }
+        if(umidade >= 16){
+
+            if(umidade <= 29){
+
+
+                prejuizo =  (30/100) *100;
+                relatorio.innerHTML = `<h3>Umidade em 16% a %29</h3> 
+                <h4 style="color:##941010">Perda Significativa !!- ${prejuizo}</h4>`
+        }
+         if(umidade >= 30){
+
+            if(umidade <= 50){
+
+
+                relatorio.innerHTML = `<h3>Umidade ideal</h3> 
+                <h4 style="color:##941010">Mas, evite a perda e adote o sistema ArmorySafe | Valor do paiol - ${gastoTotal}</h4>`
+        }
+
+         }
+
+
+
+
+            resultados.innerHTML +=`<br>A prontra entrega, é necessario diminuir a umidade do ar em <b>${50 - umidade}%</b> 
+            para se obter a condição mínima de conservação`
+        }
+
         }  else {
                 if (umidade >=80) {
                     resultados.innerHTML +=`<br>A prontra entrega, é necessario diminuir a umidade do ar em <b>${umidade - 80}%</b> para se obter a condição máxima de conservação`
                 } else {
                     resultados.innerHTML +=`<br>Parabéns, as condições de umidade do seu paiol estão adequadas! <br> Para manter o monitoramento preciso e sem oscilações, adote já ArmorySafe!`
-                }
+                }   
         }     
     } 
 </script>
