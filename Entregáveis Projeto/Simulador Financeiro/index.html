@@ -1,24 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador Financeiro Armory Safe</title>
 </head>
+
 <body>
     <h2>ArmorySafe - Faça uma Simulação do seu paiol</h2>
     <h5>Valor estimado do paiol e verificação de risco de umidade</h5>
     <p>Simule abaixo o impacto da umidade no valor das munições armazenadas.</p>
     <p>Informe a umidade média em seu paiol: <input type="text" id="input_umidade"></p>
     <p>Selecione o calibre da munição armazenada abaixo</p>
-    <button onclick="calc556()">5,56x45mm</button> <button onclick="calc762()">7,62x51mm</button> <button onclick="calc105()">105mm</button> <br><br>
-    <div id="novosInputs"></div> 
+    <button onclick="calc556()">5,56x45mm</button> <button onclick="calc762()">7,62x51mm</button> <button
+        onclick="calc105()">105mm</button> <br><br>
+    <div id="novosInputs"></div>
     <div id="fonteLegenda"></div>
     <div id="resultados"></div>
     <div id="relatorio"></div>
 
-      
-        
+
 
 </body>
 <script>
@@ -30,7 +32,7 @@
     var qtd762 = 0
     var qtd105 = 0
 
-    var contador = 0 ;
+    var contador = 0;
 
     // Colocar a fonte dos valores utilizados para o cálculo CBC
 
@@ -38,30 +40,30 @@
         tabelado = 297.8
         tipoMunicao = '5,56x45mm'
         novosInputs.innerHTML = `<b>I</b> 
-        - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas:<input type="text" id="qtd_muni556"><br><br><button onclick="perda556()">Valor por munição</button><button onclick="perdaTotal()">Simular</button>`      
-        
+        - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas:<input type="text" id="qtd_muni556"><br><br><button onclick="perda556()">Valor por munição</button><button onclick="perdaTotal()">Simular</button>`
+
     }
 
     function calc762() {
         tabelado = 350
         tipoMunicao = '7,62x51mm'
-        novosInputs.innerHTML = `<b>II</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni762"> <br><br> <button onclick="perda762()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`       
+        novosInputs.innerHTML = `<b>II</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni762"> <br><br> <button onclick="perda762()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`
     }
 
     function calc105() {
         tabelado = 8688
         tipoMunicao = '105mm'
-        novosInputs.innerHTML = `<b>III</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni105"> <br><br> <button onclick="perda105()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>` 
-      
+        novosInputs.innerHTML = `<b>III</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni105"> <br><br> <button onclick="perda105()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`
+
     }
 
     function perda556() {
         var qtdMunicao = Number(qtd_muni556.value)
-        var preco = qtdMunicao * tabelado
-        
-        qtd556 += qtdMunicao
-        gastoTotal += preco
-        contador ++
+        var preco = qtdMunicao * tabelado;
+
+        qtd556 += qtdMunicao;
+        gastoTotal += preco;
+        contador++;
 
         if (contador == 1) {
             fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
@@ -72,11 +74,11 @@
 
     function perda762() {
         var qtdMunicao = Number(qtd_muni762.value)
-        var preco = qtdMunicao * tabelado
+        var preco = qtdMunicao * tabelado;
 
-        qtd762 += qtdMunicao
-        gastoTotal += preco
-        contador ++
+        qtd762 += qtdMunicao;
+        gastoTotal += preco;
+        contador++;
 
         if (contador == 1) {
             fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
@@ -86,12 +88,12 @@
     }
 
     function perda105() {
-        var qtdMunicao = Number(qtd_muni105.value)
-        var preco = qtdMunicao * tabelado
-        
-        qtd105 += qtdMunicao
-        gastoTotal += preco
-        contador ++
+        var qtdMunicao = Number(qtd_muni105.value);
+        var preco = qtdMunicao * tabelado;
+
+        qtd105 += qtdMunicao;
+        gastoTotal += preco;
+        contador++;
 
         if (contador == 1) {
             fonteLegenda.innerHTML = '<br> <b><i>*Todos os valores a seguir foram obtidos com base em informações da CBC (Companhia Brasileira de Cartuchos) e IMBEL (Indústria de Material Bélico Brasileira)</i></b>'
@@ -219,4 +221,5 @@
         }
     } 
 </script>
+
 </html>
