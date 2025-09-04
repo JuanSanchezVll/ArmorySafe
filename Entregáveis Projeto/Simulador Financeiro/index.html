@@ -40,20 +40,20 @@
         tabelado = 297.8
         tipoMunicao = '5,56x45mm'
         novosInputs.innerHTML = `<b>I</b> 
-        - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas:<input type="text" id="qtd_muni556"><br><br><button onclick="perda556()">Valor por munição</button><button onclick="perdaTotal()">Simular</button>`
+        - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas:<input type="text" id="qtd_muni556"><button onclick="perda556()">Inserir</button> <br><br> <button onclick="perdaTotal()" style="background-color: darkgreen; color: white;"><b>Simular</b></button>`
 
     }
 
     function calc762() {
         tabelado = 350
         tipoMunicao = '7,62x51mm'
-        novosInputs.innerHTML = `<b>II</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni762"> <br><br> <button onclick="perda762()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`
+        novosInputs.innerHTML = `<b>II</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni762"><button onclick="perda762()">Inserir</button> <br><br> <button onclick="perdaTotal()" style="background-color: darkgreen; color: white;"><b>Simular</b></button>`
     }
 
     function calc105() {
         tabelado = 8688
         tipoMunicao = '105mm'
-        novosInputs.innerHTML = `<b>III</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni105"> <br><br> <button onclick="perda105()">Valor por munição</button> <button onclick="perdaTotal()">Simular</button>`
+        novosInputs.innerHTML = `<b>III</b> - Informe a quantidade de caixas de <b>${tipoMunicao}</b> armazenadas: <input type="text" id="qtd_muni105"><button onclick="perda105()">Inserir</button> <br><br><button onclick="perdaTotal()" style="background-color: darkgreen; color: white;"><b>Simular</b></button>`
 
     }
 
@@ -114,7 +114,7 @@
                 if (umidade <= 15) {
 
                     prejuizo = gastoTotal;
-                    relatorio.innerHTML = `<h3>Umidade em 10% a 15%</h3> 
+                    relatorio.innerHTML = `<h3>Umidade em 10% a 15% - Risco de explosão</h3> 
                                             <h2><span style = "color: purple">Perda máxima - Risco de explosão no valor de R$${gastoTotal}</span></h2>
                                             <h3>Local deve ser evacuado devido aos cartuchos danificados</h3> `
 
@@ -132,6 +132,9 @@
                     // Variavel do valor do paiol aplicado com - 30% do valor
                     var perdaTotalDesconto = gastoTotal - prejuizo;
 
+
+
+
                     //  perda com a nossa solução reduzindo o prejuizo em 70%
                     var prejuizoSolucao = ((porc / 100) * prejuizo);
 
@@ -148,6 +151,7 @@
                     console.log(prejuizo)
                     //valor do prejuizo com 80 
                     console.log(valorSolucao)
+                    
                     console.log(prejuizoSolucao)
 
 
@@ -158,11 +162,46 @@
                                                 | <span  style="color:green"> Valor do paiol com ArmorySafe  ⮕ R$${valorSolucao.toFixed(2)}</span></h3><br>
                                                 <b>Reduzindo em até  ${100 - porcentagemSolucao.toFixed(2)}% da perda |<span  style="color:green"> Economizando ${valorSalvado.toFixed(2)}</span>  </b>`
                 }
-                if (umidade >= 30) {
+                if (umidade >= 35) {
                     if(umidade <= 50){
+                    
+                        porc = 3;
 
-                    relatorio.innerHTML = `<h2>Umidade entre 30% a 50% - Ideal</h2> 
-                                            <h3 > <span  style="color:green">Está nas condiões adequadas mas adote o nosso sistema para estar sincronizado com a necessidade de seu paiol e não ter risco nenhum !</span> </h3>` 
+                    //  
+                     prejuizo = (porc / 100) * gastoTotal;
+
+                    // Variavel do valor do paiol aplicado com - 30% do valor
+                     perdaTotalDesconto = gastoTotal - prejuizo;
+
+                    //  O quanto você vai economizar com a nossa solução 
+                     prejuizoSolucao = (1/ 100) * prejuizo;
+
+                    // Transformando em porcentagem
+                      porcentagemSolucao = (prejuizoSolucao / prejuizo) * 100;
+
+                    // Porcentagem onde a Armory conseguiu evitar a perda 
+                     valorSolucao = gastoTotal - prejuizoSolucao;
+
+                     valorSalvado = valorSolucao - perdaTotalDesconto;
+
+
+                   // Valor do Prejuizo total
+                    console.log(prejuizo)
+                    //valor do prejuizo com 80 
+                    console.log(valorSolucao)
+                    
+                    console.log(prejuizoSolucao)
+
+                    console.log(gastoTotal)
+
+
+
+                    relatorio.innerHTML = `<h2>Umidade entre 35% a 50% - Ideal </h2> 
+                                            <p>Mesmo com as condições de umidade adequadas o seu paiol necessitará de manutenções preventivas e correrá riscos com <br> variações aleatórias e possíveis erros humanos no monitoramento, o que representa um prejuízo de até 3%.</p>
+                                                <h3> Possível prejuízo de ${porc}% que equivale a R$${prejuizo.toFixed(2)}` + ` 
+                                                <br> <span  style="color:#941010"> Valor do paiol sem ArmorySafe  R$${perdaTotalDesconto.toFixed(2)}</span> 
+                                                ⮕ <span  style="color:green"> Valor do paiol com ArmorySafe   R$${valorSolucao.toFixed(2)}</span></h3>
+                                                <b>A ArmorySafe garante a redução do prejuízo em até  ${100 - porcentagemSolucao.toFixed(2)}% | Economia potencial de <span  style="color:green"> R$ ${valorSalvado.toFixed(2)}</span>  </b>`
              
                     }
 
