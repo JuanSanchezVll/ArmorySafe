@@ -16,3 +16,13 @@ CONSTRAINT ChkPosto
 CHECK (posto IN('oficial','cabo','tenente'))
 );
 
+-- Tabela para inserção de munições, tipo, calibre etc..
+
+create table municoes (
+IdMunicoes INT PRIMARY KEY AUTO_INCREMENT,
+calibre VARCHAR(7),
+descricao VARCHAR(20),
+quant_muni INT,
+valor DECIMAL (9,2)
+);
+
