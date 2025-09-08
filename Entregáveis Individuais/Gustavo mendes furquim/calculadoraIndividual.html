@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira Armoury Safe </title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+    <h1>
+        <b>CALCULADORA FINANCEIRA <br><span style="color:darkolivegreen;"> Armoury safe </span>
+     </h1> 
+    <p><b>Selecione o seu tipo de munição <BR>
+         <span style="color:darkolivegreen;"> 1 - 5,56MM</span>  / <span style="color:darkolivegreen;"> 2 -7,62MM</span> / <span style="color:darkolivegreen;">3 - 105MM</span><br><br>
+        Coloque o tipo da munição: <br> <input id="ipt_tipo"><br>
+        <br> Quantidade de munições do seu paiol: <br ><input id="ipt_quant_muni"><br><br>
+       
+        <button onclick="CALCULO()"><b><p>Faça sua simulação.</button> <br>
+        <div id="div_msg"></div>
+
+
+
+        </div>
+</body>
+<script>
+
+
+  function CALCULO(){
+  var tipo_muni = Number(ipt_tipo.value)
+  var tipo_quantidade = Number(ipt_quant_muni.value)
+  var valormuni = 0
+  var muni556 = Number (20)
+  var muni762 = Number(25)
+  var muni105 = Number(4300)
+  var total556 = Number(muni556 * tipo_quantidade )
+  var total762 = Number(muni762 * tipo_quantidade)
+  var total105 = Number(muni105 * tipo_quantidade)
+  var muni556Format = total556.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  var muni762format = total762.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  var muni105format = total105.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+
+ if (tipo_muni == 1 ) {
+   div_msg.innerHTML = `<b>Caso a umidade do seu paiol esteja abaixo dos <span style ="color:red">60%</span> ou acima dos <span style ="color:red">80%</span>, o seu prejuizo pode chegar a aproximadamente de <span style ="color:red"> ${ muni556Format}. </span><br><br>
+    Com a utilização da tecnologia da ArmourySafe de monitoramento de umidade, esses <span style="color:green">${muni556Format}</span> podem ser preservados e realocados em diferentes áreas do seu negócio.`
+ }if (tipo_muni == 2) {
+      div_msg.innerHTML = `<b><b>Caso a umidade do seu paiol esteja abaixo dos <span style ="color:red">60%</span> ou acima dos <span style ="color:red">80%</span>, o seu prejuizo pode chegar a aproximadamente de <span style ="color:red"> ${ muni762Format}. </span><br><br>
+    Com a utilização da tecnologia da ArmourySafe de monitoramento de umidade, esses <span style="color:green">${muni762Format}</span> podem ser preservados e realocados em diferentes áreas do seu negócio.`
+
+ }if (tipo_muni ==3) {
+       div_msg.innerHTML = `<b>Caso a umidade do seu paiol esteja abaixo dos <span style ="color:red">60%</span> ou acima dos <span style ="color:red">80%</span>, o seu prejuizo pode chegar a aproximadamente de <span style ="color:red"> ${ muni105Format}. </span><br><br>
+    Com a utilização da tecnologia da ArmourySafe de monitoramento de umidade, esses <span style="color:green">${muni105Format}</span> podem ser preservados e realocados em diferentes áreas do seu negócio.`
+
+ }
+}
+</script> 
+</html>
