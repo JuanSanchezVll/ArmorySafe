@@ -35,3 +35,73 @@ NivelUmidade DECIMAL (4,2)
 
 );
 
+-- Tabela para os paiois, armazernar o umidade media do paiol, e quantidade de munições amarzenadas nele.
+
+create table paiois (
+IdPaiois INT PRIMARY KEY AUTO_INCREMENT,
+LocalPaiol VARCHAR(50),
+QuantMuni INT,
+UmidadeMedia DECIMAL (4,2)
+);
+
+-- Inseri alguns dados de teste...
+INSERT INTO Cadastro VALUES 
+(
+'1','Gustavo Mendes','Gustavomendes@gmail.com','senhaA',9876543,'Base Militar de Pirapora','oficial'
+),
+(
+'2','Enrico Assef','Enricoasef@gmail.com','senhaB',90467328,'Base Militar de Berilo', 'tenente'
+),
+(
+'3','Gabriel Alves', 'Gabrielalves@gmail.com','senhaC','76598428','Base militar de Leliveldia', 'cabo'
+),
+(
+'4','Guilherme mesquita', 'Guimesquita@gmail.com', 'senhaD','85738779','Base militar de guarulhos', 'tenente'
+),
+(
+'5','Juan Zito', 'Juan@gmail.com','senhaE','75694754','Base militar de Noronha', 'cabo'
+);
+
+select * from cadastro;
+
+-- Inserindo dados na tabela Municoes
+INSERT INTO municoes (calibre, descricao, quant_muni, valor) VALUES
+(
+  '5.56','Fuzil',500,4.50
+),
+(
+  '9mm','Pistola',300,3.20
+),
+(
+  '7.62','Metralhadora',200,6.70
+);
+
+-- Inserindo dados na tabela Sensores
+INSERT INTO sensores (NivelUmidade) VALUES
+(
+  55.30
+),
+(
+  62.10
+),
+(
+  75.00
+);
+
+-- Inserindo dados na tabela Paiois
+INSERT INTO paiois (LocalPaiol, QuantMuni, UmidadeMedia) VALUES
+(
+  'Paiol Central',1000,58.40
+),
+(
+  'Paiol Secundário',600,65.20
+),
+(
+  'Paiol Avançado',400,72.50
+);
+
+-- Testando
+select * from Cadastro;
+select * from municoes;
+select * from sensores;
+select * from paiois;
