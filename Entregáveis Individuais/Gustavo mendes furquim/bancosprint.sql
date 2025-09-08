@@ -26,3 +26,12 @@ quant_muni INT,
 valor DECIMAL (9,2)
 );
 
+-- Tabela para os sensores, amarzenamento de umidade e data da mediçāo.
+
+create table sensores (
+IdSensores INT PRIMARY KEY AUTO_INCREMENT,
+Datamedicao DATETIME DEFAULT current_timestamp,
+NivelUmidade DECIMAL (4,2)
+
+);
+
